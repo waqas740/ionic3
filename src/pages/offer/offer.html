@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Card Images</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)">
+  </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item class="item-color" *ngFor="let offer of offers">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/lc.png">
+      </ion-thumbnail>
+      <h2 class="heading-color">{{offer.name}}</h2>
+      <p>Users can have more than one Login, but a login must have exactly one user, which means a Login cannot be saved without a User ID.Users can have more than one Login, but a login must have exactly one user, which means a Login cannot be saved without a User ID.</p>
+      <p>Flat 50%</p>
+    </ion-item>
+    </ion-list>
+
+
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+    </ion-content>
